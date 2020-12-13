@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lora');
+
+.form-div{
+    margin: 50px auto 50px;
+    padding: 25px 15px 10px 15px;
+    border: 1px solid #80ced7;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+.form-control:focus{
+    box-shadow: none;
+}
+form p{
+    font-size: 0.89em;
+}
+.form-group{
+    margin-top: 25px;
+}
+    </style>
+    <title> Register </title>
+  </head>
+  <body>
+  
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 form-div">
+                <form action="{% url 'register' %}" method="post">
+                {% csrf_token %}
+                    <h3 class="text-center">Register as new <b>Student</b></h3>
+                    {% if error %}
+                    <div class="alert alert-danger">
+                            <li>{{ error }}</li>
+                    </div>
+                    {% endif %}
+                    <div class="form-group">
+                        <label for="username">Username: </label>
+                        <input type="text" name="username" class="form-control form-control-lg" value="{{ uname }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                        <input type="text" class="form-control form-control-lg" name="email" value="{{ email }}"">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password: </label>
+                        <input type="password" name="password" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordConf">Confirm Password: </label>
+                        <input type="password" name="passwordConf" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group d-grid gap-2">
+                        <button type="submit" class="btn btn-block btn-primary btn-lg" name="signup-btn"> Register </button>
+                    </div>
+                    <p class="text-center">Already a <b>Student</b> of SCC <a href="/login">Login</a></p>
+                
+
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>

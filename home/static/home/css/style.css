@@ -1,0 +1,151 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+/* styling navbar  */
+ .icons{
+    border-radius: 25%;
+    border: 2px solid yellow;
+    width: 40px;
+    height: auto;
+    margin-right: 5px;
+    padding: 5px 5px;
+    background: #fff;
+    transition: 0.3s ease;
+}
+.icons:hover{
+    padding: 7px 7px;
+    background-color: yellow;
+    border: 3px solid rgb(179, 140, 140);
+}
+.nav-right ul{
+    list-style-type: none;
+    float: right;
+    margin-right: 55px;
+    margin-top: 8px;
+}
+.nav-right ul .list-items{
+    display: inline-block;
+} 
+
+/* styling side bar  */
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url(../images/index-background.jpg);
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: none;
+}
+.navigation{
+    position: fixed;
+    width: 42px;
+    height: 100%;
+    background: #fff;
+    transition: 0.6s ease;
+    overflow: hidden;
+}
+.navigation:hover{
+    width: 200px;
+}
+.navigation.active{
+    width: 200px;
+}
+.navigation ul{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    color: #fff;
+}
+.navigation ul li{
+    position: relative;
+    width: 100%;
+    list-style: none;
+}
+.navigation ul li:hover{
+    background: #ea1d63;
+}
+.navigation ul li a{
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: #000;
+}
+.navigation ul li a:hover{
+    color: #fff;
+}
+.navigation ul li a .icon{
+    position: relative;
+    display: block;
+    min-width: 45px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    margin-top: 8px;
+}
+.navigation ul li a .icon .fa{
+    width: 30px;
+    height: auto;
+    font-size: 34px;
+}
+.navigation ul li a .title{
+    position: relative;
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    text-align: start;
+    white-space: nowrap;
+}
+.toggle{
+    cursor: pointer;
+}
+.toggle.active{
+    padding: 1px 1px;
+    background-color: yellow;
+    border: 3px solid rgb(179, 140, 140);
+}
+.toggle:before{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+    font-size: 30px;
+    text-align: center;
+    color: #fff;
+}
+.ml-3{
+    margin-left: 8px;
+}
+.back{
+    display: none;
+}
+@media (max-width: 767px){
+    .navigation{
+        left: -60px;
+    }
+    .navigation.active{
+        left: 0px;
+        width: 100%;
+    }
+    .nav-right{
+        position: absolute;
+        top: 2%;
+        right: 20%;
+    }
+    .icons{
+        width: 50px;
+        height: auto;
+    }
+    .ml-3{
+        margin-left: +10px;
+    }
+    .back{
+        display: block;
+    }
+}

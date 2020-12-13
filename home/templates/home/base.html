@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% block title %}
+    {% endblock title %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+</head>
+
+<body>
+
+
+    <!-- navbar  -->
+    <div class="navbar">
+        <nav>
+            <div class="nav-right">
+                <ul>
+
+                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/home.png' %} " alt="Home"></a></li>
+                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/profile-user.png' %} "
+                                alt="Profile"></a>
+                    </li>
+                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/settings.png' %} "
+                                alt="Settings"></a>
+                    </li>
+                    <li class="list-items">
+                        <div class="toggle ml-3" onclick="toggleMenu()"><img class="icons" src="{% static 'home/images/menu.png' %} "
+                                alt="">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+
+
+    <!-- sidebar  -->
+    <div class="navigation">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/home.png' %} " alt=""></span>
+                    <span class="title">Home</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/profile-user.png' %} " alt=""></span>
+                    <span class="title">Profile</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/test.png' %} " alt=""></span>
+                    <span class="title">Test</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/Result.png' %} " alt=""></span>
+                    <span class="title">Result</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/Assignment.png' %} " alt=""></span>
+                    <span class="title">Assignment</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/StudyMaterial.png' %} " alt=""></span>
+                    <span class="title">Study Material</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/promotion.png' %} " alt=""></span>
+                    <span class="title">Announcement</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/settings.png' %} " alt=""></span>
+                    <span class="title">Settings</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/password.png' %} " alt=""></span>
+                    <span class="title">Password</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/logout.png' %} " alt=""></span>
+                    <span class="title">Sign Out</span>
+                </a>
+            </li>
+            <li class="back">
+                <a href="#" onclick="toggleMenu()">
+                    <span class="icon"><img class="fa" src="{% static 'home/images/previous.png' %} " alt=""></span>
+                    <span class="title">Back</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% block body %}
+    {% endblock body %}
+    <script>
+        function toggleMenu() {
+            let navigation = document.querySelector('.navigation');
+            let toggle = document.querySelector('.toggle');
+            navigation.classList.toggle('active');
+            toggle.classList.toggle('active');
+
+        }
+    </script>
+
+
+</body>
+
+</html>
