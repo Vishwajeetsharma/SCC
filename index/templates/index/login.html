@@ -27,7 +27,7 @@ form p{
     margin-top: 25px;
 }
     </style>
-    <title> Register </title>
+    <title> SCC - Login </title>
   </head>
   <body>
   
@@ -38,7 +38,7 @@ form p{
             <div class="col-md-4 offset-md-4 form-div">
                 <form action="{% url 'login' %}" method="POST">
                 {% csrf_token %}
-                    <h3 class="text-center">Registerd <b>Student</b> Login</h3>
+                    <h3 class="text-center"><b>Student</b> Login</h3>
                     {% if error %}
                     <div class="alert alert-danger">
                             <li>{{ error }}</li>
