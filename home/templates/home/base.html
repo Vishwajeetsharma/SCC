@@ -17,11 +17,11 @@
             <div class="nav-right">
                 <ul>
 
-                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/home.png' %} " alt="Home"></a></li>
-                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/profile-user.png' %} "
+                    <li class="list-items"><a href="{% url 'home_index' %}"><img class="icons" src="{% static 'home/images/home.png' %} " alt="Home"></a></li>
+                    <li class="list-items"><a href="{% url 'profile' %}"><img class="icons" src="{% static 'home/images/profile-user.png' %} "
                                 alt="Profile"></a>
                     </li>
-                    <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/settings.png' %} "
+                    <li class="list-items"><a href="{% url 'settings' %}"><img class="icons" src="{% static 'home/images/settings.png' %} "
                                 alt="Settings"></a>
                     </li>
                     <li class="list-items">
@@ -39,61 +39,61 @@
     <div class="navigation">
         <ul>
             <li>
-                <a href="#">
+                <a href="{% url 'home_index' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/home.png' %} " alt=""></span>
                     <span class="title">Home</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'profile' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/profile-user.png' %} " alt=""></span>
                     <span class="title">Profile</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'test' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/test.png' %} " alt=""></span>
                     <span class="title">Test</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'result' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/Result.png' %} " alt=""></span>
                     <span class="title">Result</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'assignment' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/Assignment.png' %} " alt=""></span>
                     <span class="title">Assignment</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'study-material' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/StudyMaterial.png' %} " alt=""></span>
                     <span class="title">Study Material</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'announcement' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/promotion.png' %} " alt=""></span>
                     <span class="title">Announcement</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'settings' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/settings.png' %} " alt=""></span>
                     <span class="title">Settings</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'password' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/password.png' %} " alt=""></span>
                     <span class="title">Password</span>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{% url 'logout' %}">
                     <span class="icon"><img class="fa" src="{% static 'home/images/logout.png' %} " alt=""></span>
                     <span class="title">Sign Out</span>
                 </a>

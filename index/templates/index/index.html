@@ -11,10 +11,10 @@
         integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Yanone+Kaffeesatz&display=swap" rel="stylesheet">
+    
     {% load static %}
-    <link rel="stylesheet" href="{% static 'index/css/style.css' %}">
-
-
+    <link rel="stylesheet" href="{% static 'index_static/css/style.css' %}">
+    
     <title> SCC - Shukla Commerce Classe </title>
 
 <body>
@@ -59,8 +59,13 @@
         </h1>
         <h2 class="top">We belive in knowledge</h2>
         <div class="top">
+            {% if user.is_authenticated %}
+                <a href="{% url 'home_index' %}" class="btn">Student Area</a>
+                <a href="{% url 'logout' %}" class="btn">Log out</a>
+            {% else %}
             <a href="{% url 'register' %}" class="btn">Register</a>
             <a href="{% url 'login' %}" class="btn">Login</a>
+            {% endif %}
         </div>
     </div>
 

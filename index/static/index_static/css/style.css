@@ -1,0 +1,63 @@
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(../images/index-background.jpg);
+    display: inline-flexbox;
+    background-repeat: no-repeat;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+.icon {
+    border: 2px solid #000;
+    border-radius: 50% !important;
+  }
+.red {
+    color: rgb(255, 0, 0) !important;
+     
+}
+.menu-icon {
+    border-radius: 6px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.headerset {
+    padding-top: 170px;
+    box-sizing: border-box;
+    padding-right: 110px;
+}
+
+.headerset h2 {
+    font-size: 22px;
+}
+.headerset h1{
+    font-size: 52px;
+}
+.SCC-head{
+    color: #fff;
+    padding: 5px 30px;
+    margin-left: 60px;
+    font-size: 52px;
+}
+.top{
+    padding-top: 15px;
+}
+.btn{
+    background-color: #4287f5;
+    color: #fff;
+    border: 2px solid #4287f5;
+    border-radius: 6px;
+    padding: 10px 50px;
+    transition: 0.4s ease;
+}
+.btn:hover{
+    background-color: transparent;
+    color: #4287f5;
+    padding: 11px 55px;
+}
+.white{
+    color: white !important;
+}
+.navlink:hover{
+    text-decoration: none;
+}
