@@ -14,11 +14,23 @@ def register(request):
         email = request.POST['email']
         pwd = request.POST['password']
         pwdCon = request.POST['passwordConf']
-        if pwd == pwdCon:
-            User.objects.create_user(uname, email, pwd)
-            return render(request, '/login')
-        else:
+        if User.objects.filter(username=uname).exists():
+            return render(request, 'index/register.html', {'error': "Username already exists.", 'uname':uname, 'email':email,})
+        if User.objects.filter(email=email).exists():
+            return render(request, 'index/register.html', {'error': "Email already exists.", 'uname':uname, 'email':email,})
+        if len(uname) < 1:
+            return render(request, 'index/register.html', {'error': "Empty feilds are not allowed", 'uname':uname, 'email':email,})
+        if len(email) < 1:
+            return render(request, 'index/register.html', {'error': "Empty feilds are not allowed", 'uname':uname, 'email':email,})
+        if not uname.isalnum:
+            return render(request, 'index/register.html', {'error': "Username can only contain numbers and letters", 'uname':uname, 'email':email,})
+        if pwd != pwdCon:
             return render(request, 'index/register.html', {'error': "Passwords Don't match", 'uname':uname, 'email':email,})
+        if len(pwd) < 6:
+            return render(request, 'index/register.html', {'error': "Passwords should not less than 6", 'uname':uname, 'email':email,})
+        else:
+            User.objects.create_user(uname, email, pwd)
+            return redirect('index_index')
     else:
         return render(request, 'index/register.html')
 
