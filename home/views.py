@@ -39,4 +39,8 @@ def announcement(request):
 
 @login_required(login_url="/login/")
 def password(request):
-    return HttpResponse(" password ")
+    return render(request, 'home/content/password.html')
+
+@login_required(login_url="/login/")
+def password(request):
+    return render(request, 'home/content/password.html')

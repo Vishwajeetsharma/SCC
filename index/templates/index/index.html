@@ -27,7 +27,7 @@
             <div class="container">
                 <a href="#" class="navbar-brand font-weight-bold white">SCC</a>
                 <buttont class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsenavbar">
-                    <img src="images/menu.png" alt="more.." height="35px" width="ayto">
+                    <img class="bars" style="background-color: white; padding: 5px 5px; border: 1px solid green; border-radius: 25%;" src="{% static 'index_static/images/menu.png' %}" alt="more.." height="35px" width="ayto">
                 </buttont>
                 <div class="collape navbar-collapse text-center" id="collapsenavbar">
                     <ul class="navbar-nav ml-auto white">
@@ -54,7 +54,7 @@
 
     <!-- writing welcome to shukla commerce classes and two buttons and displaying logo -->
     <div class="container text-center headerset text-white">
-        <h2>Welcome to</h2>
+        <h2>Welcome {% if user.is_authenticated %} {{ request.user }} {% endif %} to</h2>
         <h1><span class="red">S</span>hukla <span class="red">C</span>ommerce <span class="red">C</span>lasses
         </h1>
         <h2 class="top">We belive in knowledge</h2>

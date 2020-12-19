@@ -6,6 +6,10 @@
     {% endblock title %}</title>
     {% load static %}
     <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+    <style> {% block style %}
+    {% endblock style %} </style>
+    {% block links %}
+    {% endblock links %}
 </head>
 
 <body>
