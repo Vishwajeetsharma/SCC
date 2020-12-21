@@ -56,3 +56,9 @@ def login(request):
 def logoutbtn(request):
     logout(request)
     return redirect('index_index')
+
+def forgotPass(request):
+    if request.method == 'POST':
+        return render(request, 'index/forgotPass.html', { 'alert':"alert-success", 'error': "Password reset link successfully sent on yor email" })
+    else:
+        return render(request, 'index/forgotPass.html')
