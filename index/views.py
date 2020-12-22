@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, logout
 from django.contrib.auth import login as auth_login
 from django.contrib.auth.models import User
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 
 # Create your views here.
 def index(request):
@@ -33,6 +36,13 @@ def register(request):
         else:
             user = User.objects.create_user(uname, email, pwd)
             auth_login(request, user)
+            template = render_to_string('index/email_conf.html', {'name': uname})
+            email = EmailMessage(
+                'Thank you for joing SCC - Shukla Commerce Classes',
+                template,
+                settings.EMAIL_HOST_USER,
+                [email]
+            )
             return redirect('index_index')
     else:
         return render(request, 'index/register.html')
@@ -57,7 +67,7 @@ def logoutbtn(request):
     logout(request)
     return redirect('index_index')
 
-def forgotPass(request):
+def agasdf(request):
     if request.method == 'POST':
         return render(request, 'index/forgotPass.html', { 'alert':"alert-success", 'error': "Password reset link successfully sent on yor email" })
     else:

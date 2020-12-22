@@ -20,7 +20,7 @@
         <nav>
             <div class="nav-right">
                 <ul>
-
+                    <li style="color:white">Welcome <b>{{ request.user }}</b></li>
                     <li class="list-items"><a href="{% url 'home_index' %}"><img class="icons" src="{% static 'home/images/home.png' %} " alt="Home"></a></li>
                     <li class="list-items"><a href="#"><img class="icons" src="{% static 'home/images/profile-user.png' %} "
                                 alt="Profile"></a>

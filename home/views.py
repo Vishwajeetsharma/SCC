@@ -3,7 +3,6 @@ from django.http import HttpResponse
 from index.views import login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from .decorators import allowed_users
 
 # Create your views here.
 @login_required(login_url="/login/")
@@ -20,8 +19,7 @@ def home_index(request):
             return redirect('b2nd')
         if ls == 'b3rd':
             return redirect('b3rd')
-        else:
-            return render(request, 'home/index.html')
+    return render(request, 'home/index.html')
 
 @login_required(login_url="/login/")
 def c11th(request):
