@@ -1,12 +1,26 @@
 {% extends 'home/base.html' %}
 {% block title %} Home {% endblock title %}
+{% block home %}active{% endblock home %}
 {% block style %}
 
-
+.p{
+    color: white;
+    margin-left: 55px;
+    padding: 10px 50px;
+}
+@media (max-width: 767px){
+    .p{
+    }
+}
 
 {% endblock style %}
 {% block body %}
 
-
+<p class="p">
+You are not added to any batch or class you have to contact us to add in a batch <br>
+<a href="{% url 'payments' %}">Add me in a batch</a> <br>
+mobile no. <a href="tel:+918010604381">+91 80106 04381</a> <br>
+email:- <a href="mailto:shuklacommerceclasses@gmail.com">shuklacommerceclasses@gmail.com</a>
+</p>
 
 {% endblock body %}

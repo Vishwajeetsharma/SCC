@@ -3,6 +3,9 @@ from django.http import HttpResponse
 from index.views import login
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+from .PayTm import Checksum
+MERCHANT_KEY = 'M7#Mx01Fjjg3AK6%'
 
 # Create your views here.
 @login_required(login_url="/login/")
@@ -60,3 +63,27 @@ def b3rd(request):
         return HttpResponse('B.Com 3rd year')
     else:
         return redirect('home_index')
+
+@login_required
+def payments(request):
+    if request.method == 'POST':
+        data_dict = {
+            'MID':'GaVogD70606004927811',
+            'ORDER_ID':'dddgfgfhfeg',
+            'TXN_AMOUNT':'499',
+            'CUST_ID':request.user.email,
+            'INDUSTRY_TYPE_ID':'Retail',
+            'WEBSITE':'WEBSTAGING',
+            'CHANNEL_ID':'WEB',
+	        # 'CALLBACK_URL':'http://127.0.0.1:8000/home/handlerequest/'
+        }
+        param_dict = data_dict  
+        param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(data_dict, MERCHANT_KEY)
+        return render(request, 'home/paytm.html', {'param_dict':param_dict})
+    return render(request, 'home/checkout.html')
+
+
+@login_required(login_url="/login/")
+@csrf_exempt
+def handleRequest(request):
+    return HttpResponse("Done")

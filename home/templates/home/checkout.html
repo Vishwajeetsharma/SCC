@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Lora');
+
+.form-div{
+    margin: 50px auto 50px;
+    padding: 25px 15px 10px 15px;
+    border: 1px solid #80ced7;
+    border-radius: 5px;
+    font-size: 1.1em;
+}
+.form-control:focus{
+    box-shadow: none;
+}
+form p{
+    font-size: 0.89em;
+}
+.form-group{
+    margin-top: 25px;
+}
+    </style>
+    <title> SCC - Login </title>
+  </head>
+  <body>
+  
+
+
+<div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4 form-div">
+                <form action="{% url 'payments' %}" method="POST">
+                {% csrf_token %}
+                    <h3 class="text-center">Adding in a batch</h3>
+                    {% if error %}
+                    <div class="alert alert-danger">
+                            <li>{{ error }}</li>
+                    </div>
+                    {% endif %}
+                    <div class="alert alert-info">
+                        <li>You will be charger by <b>499₹</b></li>
+                    </div>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option selected disabled>--Select Class--</option>
+                        <option value="11th">11th</option>
+                        <option value="12th">12th</option>
+                        <div class="dropdown-divider"></div>
+                        <option value="1st">B.Com 1st year</option>
+                        <option value="2nd">B.Com 2nd year</option>
+                        <option value="3rd">B.Com 3rd year</option>
+                    </select>
+                    <div class="form-group">
+                        <label for="email">Email: </label>
+                        <input type="email" required name="email" class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone no: </label>
+                        <input type="number" name="phone" required class="form-control form-control-lg">
+                    </div>
+                    <div class="form-group d-grid gap-2">
+                        <button type="submit" class="btn btn-block btn-primary btn-lg" name="log-btn"> Submit by Paytm </button>
+                    </div>
+                    </form>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
