@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from index.views import login
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .PayTm import Checksum
@@ -64,26 +64,65 @@ def b3rd(request):
     else:
         return redirect('home_index')
 
-@login_required
+@login_required(login_url="/login/")
 def payments(request):
     if request.method == 'POST':
         data_dict = {
             'MID':'GaVogD70606004927811',
-            'ORDER_ID':'dddgfgfhfeg',
+            'ORDER_ID':'043',
             'TXN_AMOUNT':'499',
             'CUST_ID':request.user.email,
             'INDUSTRY_TYPE_ID':'Retail',
             'WEBSITE':'WEBSTAGING',
             'CHANNEL_ID':'WEB',
-	        # 'CALLBACK_URL':'http://127.0.0.1:8000/home/handlerequest/'
+	        'CALLBACK_URL':'http://127.0.0.1:8000/home/handlerequest/'
         }
         param_dict = data_dict  
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(data_dict, MERCHANT_KEY)
         return render(request, 'home/paytm.html', {'param_dict':param_dict})
     return render(request, 'home/checkout.html')
 
-
-@login_required(login_url="/login/")
 @csrf_exempt
 def handleRequest(request):
-    return HttpResponse("Done")
+    form = request.POST
+    response_dict = {}
+    for i in form.keys():
+        response_dict[i] = form[i]
+        if i == 'CHECKSUMHASH':
+            checksum = form[i]
+
+    verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
+    if verify:
+        if response_dict['RESPCODE'] == '01':
+            print("Order Successfull")
+        else:
+            print("Order was not successfull because" + response_dict['RESPMSG'])
+    return render(request, 'home/paymentstatus.html', {'response':response_dict})
+
+@login_required(login_url="/login/")
+def add_in_a_class(request):
+    if request.method == 'POST':
+        groupe = request.POST['class_batch']
+
+        if groupe == 'b2nd':
+            group = Group.objects.get(name = 'b2nd')
+            request.user.groups.add(group)
+        
+        if groupe == 'b1st':
+            group = Group.objects.get(name = 'b1st')
+            request.user.groups.add(group)
+        
+        if groupe == 'b3rd':
+            group = Group.objects.get(name = 'b3rd')
+            request.user.groups.add(group)
+        
+        if groupe == 'c11th':
+            group = Group.objects.get(name = 'c11th')
+            request.user.groups.add(group)
+        
+        if groupe == 'c12th':
+            group = Group.objects.get(name = 'c12th')
+            request.user.groups.add(group)
+        return redirect('home_index')
+    else:
+        return redirect('payments')

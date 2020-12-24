@@ -18,4 +18,5 @@ urlpatterns = [
     path('B.Com-1st-year/', views.b1st, name="b1st"),
     path('B.Com-2nd-year/', views.b2nd, name="b2nd"),
     path('B.Com-3rd-year/', views.b3rd, name="b3rd"),
+    path('add-class', views.add_in_a_class, name="add_in_a_class"),
 ]

@@ -27,16 +27,20 @@ form p{
     margin-top: 25px;
 }
     </style>
-    <title> SCC - Login </title>
+    <title> Payment Status </title>
   </head>
   <body>
   
 
 
 <div class="container">
+
         <div class="row">
             <div class="col-md-4 offset-md-4 form-div">
-                <form action="{% url 'payments' %}" method="POST">
+                Payment status regards your order id {{response.ORDERID}}
+        {% if response.RESPCODE == '01' %}
+        Order Success <br>
+        <form action="{% url 'add_in_a_class' %}" method="post">
                 {% csrf_token %}
                     <h3 class="text-center">Adding in a batch</h3>
                     {% if error %}
@@ -45,26 +49,24 @@ form p{
                     </div>
                     {% endif %}
                     <div class="alert alert-info">
-                        <li>You will be charger by <b>499₹</b></li>
-                        <li>You are not allowed to add in multiple classes</li>
+                        <li>You was already paid <b>499₹</b> no need to woory!</li>
                     </div>
                     <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" name="class_batch" required>
                         <option selected disabled>--Select Class--</option>
-                        <option value="11th">11th</option>
-                        <option value="12th">12th</option>
+                        <option value="c11th">11th</option>
+                        <option value="c12th">12th</option>
                         <div class="dropdown-divider"></div>
-                        <option value="1st">B.Com 1st year</option>
-                        <option value="2nd">B.Com 2nd year</option>
-                        <option value="3rd">B.Com 3rd year</option>
+                        <option value="b1st">B.Com 1st year</option>
+                        <option value="b2nd">B.Com 2nd year</option>
+                        <option value="b3rd">B.Com 3rd year</option>
                     </select>
-                    <div class="form-group">
-                        <label for="phone">Phone no: </label>
-                        <input type="number" name="phone" required class="form-control form-control-lg">
-                    </div>
                     <div class="form-group d-grid gap-2">
-                        <button type="submit" class="btn btn-block btn-primary btn-lg" name="log-btn"> Submit </button>
+                        <button type="submit" class="btn btn-block btn-primary btn-lg" name="add_in_a_class_btn"> Submit </button>
                     </div>
                     </form>
+        {% else %}
+        Order failiure
+        {% endif %}
             </div>
         </div>
     </div>
