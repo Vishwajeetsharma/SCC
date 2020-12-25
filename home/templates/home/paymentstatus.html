@@ -37,7 +37,7 @@ form p{
 
         <div class="row">
             <div class="col-md-4 offset-md-4 form-div">
-                Payment status regards your order id {{response.ORDERID}}
+                Payment status regards your order id <b>{{response.ORDERID}}</b>
         {% if response.RESPCODE == '01' %}
         Order Success <br>
         <form action="{% url 'add_in_a_class' %}" method="post">

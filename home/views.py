@@ -5,6 +5,7 @@ from django.contrib.auth.models import User, Group
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from .PayTm import Checksum
+from .models import Order
 MERCHANT_KEY = 'M7#Mx01Fjjg3AK6%'
 
 # Create your views here.
@@ -64,12 +65,22 @@ def b3rd(request):
     else:
         return redirect('home_index')
 
+import random
+import string
 @login_required(login_url="/login/")
 def payments(request):
     if request.method == 'POST':
+        letters = string.ascii_lowercase
+        orderss =  ( ''.join(random.choice(letters) for i in range(28)) )
+        uname = request.user
+        email = request.user.email
+        phone_number = request.POST['phone']
+        class_batch = request.POST['class_batch']
+        order = Order(generated_order_id=orderss, name=uname, email=email, phone=phone_number, for_class=class_batch, paid='Unpaid')
+        order.save()
         data_dict = {
             'MID':'GaVogD70606004927811',
-            'ORDER_ID':'043',
+            'ORDER_ID':orderss,
             'TXN_AMOUNT':'499',
             'CUST_ID':request.user.email,
             'INDUSTRY_TYPE_ID':'Retail',
@@ -104,6 +115,8 @@ def add_in_a_class(request):
     if request.method == 'POST':
         groupe = request.POST['class_batch']
 
+        if groupe == '':
+            return redirect('add_in_a_class')
         if groupe == 'b2nd':
             group = Group.objects.get(name = 'b2nd')
             request.user.groups.add(group)
