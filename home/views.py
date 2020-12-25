@@ -90,11 +90,15 @@ def payments(request):
         }
         param_dict = data_dict  
         param_dict['CHECKSUMHASH'] = Checksum.generate_checksum(data_dict, MERCHANT_KEY)
+        if request.user.groups.exists():
+            return redirect('index_index')
         return render(request, 'home/paytm.html', {'param_dict':param_dict})
     return render(request, 'home/checkout.html')
 
 @csrf_exempt
 def handleRequest(request):
+    if request.user.groups.exists():
+        return redirect('index_index')
     form = request.POST
     response_dict = {}
     for i in form.keys():
@@ -105,6 +109,11 @@ def handleRequest(request):
     verify = Checksum.verify_checksum(response_dict, MERCHANT_KEY, checksum)
     if verify:
         if response_dict['RESPCODE'] == '01':
+            username = request.user
+            generated_order_id = response_dict['ORDERID']
+            order = Order.objects.get(generated_order_id = generated_order_id)
+            order.paid = 'Paid'
+            order.save()
             print("Order Successfull")
         else:
             print("Order was not successfull because" + response_dict['RESPMSG'])
