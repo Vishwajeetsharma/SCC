@@ -8,6 +8,9 @@
     margin-left: 55px;
     padding: 10px 50px;
 }
+.link{
+    color: #1b56f7;
+}
 @media (max-width: 767px){
     .p{
     }
@@ -18,9 +21,9 @@
 
 <p class="p">
 You are not added to any batch or class you have to contact us to add in a batch <br>
-<a href="{% url 'payments' %}">Add me in a batch</a> <br>
-mobile no. <a href="tel:+918010604381">+91 80106 04381</a> <br>
-email:- <a href="mailto:shuklacommerceclasses@gmail.com">shuklacommerceclasses@gmail.com</a>
+<a class="link" href="{% url 'payments' %}">Add me in a batch</a> <br>
+mobile no. <a class="link" href="tel:+918010604381">+91 80106 04381</a> <br>
+email:- <a class="link" href="mailto:shuklacommerceclasses@gmail.com">shuklacommerceclasses@gmail.com</a>
 </p>
 
 {% endblock body %}
