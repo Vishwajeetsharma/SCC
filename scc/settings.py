@@ -132,3 +132,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'messagefromscc@gmail.com'
 EMAIL_HOST_PASSWORD = 'ShuklaCommerceClasses@124'
+KEY_ID = "rzp_test_gYja6Jn0yr6ndb"
+KEY_SECRET = "wanAGHeJYgJXPtDIM6iriC4i"
